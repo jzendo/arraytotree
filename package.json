@@ -1,0 +1,29 @@
+{
+  "name": "arraytotree",
+  "version": "0.0.1",
+  "description": "A tool that convert plain array to tree data",
+  "main": "src/index.js",
+  "repository": "https://github.com/jzendo/arraytotree.git",
+  "author": "j <jzendo@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "prettier": "prettier --write src/**/*.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "jest": "^24.7.1",
+    "common-tags": "^1.8.0",
+    "prettier": "1.16.4"
+  },
+  "dependencies": {
+    "invariant": "^2.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern src/**/*.js"
+    }
+  }
+}
