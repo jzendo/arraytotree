@@ -41,6 +41,7 @@ export default (arr = [], dim = 2) => {
   let root = queue.shift()
   // Make group queue
   let groupQ = generateGroupQueueFrom(queue, dim)
+
   const getNextGroupFn = () => groupQ.shift()
 
   return buildNode([root], getNextGroupFn)
