@@ -11,18 +11,20 @@ function getNewNode(t) {
  * @param {function} getNextGroup get the next group
  */
 function buildNodes(owners, getNextGroup) {
-	let collectedNextOwners = []
+  let collectedNextOwners = []
 
-	owners.forEach(owner => {
-		let group = getNextGroup()
+  owners.forEach(owner => {
+    let group = getNextGroup()
 
     if (group) {
-      group.map(i => new Node(i)).forEach(n => {
-				owner.getChildren().push(n);
-				collectedNextOwners.push(n);
-      })
+      group
+        .map(i => new Node(i))
+        .forEach(n => {
+          owner.getChildren().push(n)
+          collectedNextOwners.push(n)
+        })
     }
-	})
+  })
 
   if (collectedNextOwners.length) {
     buildNodes(collectedNextOwners, getNextGroup)

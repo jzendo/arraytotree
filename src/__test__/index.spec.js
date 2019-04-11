@@ -13,7 +13,9 @@ test('should be ok', () => {
   let result = tree instanceof Node
   expect(result).toBeTruthy()
 
-  let thrown = () => { makeTree(null) }
+  let thrown = () => {
+    makeTree(null)
+  }
   expect(thrown).toThrow()
 })
 

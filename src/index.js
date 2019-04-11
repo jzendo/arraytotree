@@ -3,21 +3,24 @@ import stringifyTree from './private/stringify-tree'
 
 const getGroupQueue = (queue, dim) => {
   let i = 0
-  let groupQueue = queue.reduce((r, c) => {
-    if (++i <= dim) {
-      r.t.push(c)
-      if (i === dim) {
-        r.r.push(r.t)
-        i = 0
-        r.t = []
+  let groupQueue = queue.reduce(
+    (r, c) => {
+      if (++i <= dim) {
+        r.t.push(c)
+        if (i === dim) {
+          r.r.push(r.t)
+          i = 0
+          r.t = []
+        }
       }
-    }
 
-    return r
-  }, {
-    r: [],
-    t: []
-  })
+      return r
+    },
+    {
+      r: [],
+      t: []
+    }
+  )
 
   if (groupQueue.t.length) groupQueue.r.push(groupQueue.t)
 
@@ -36,11 +39,7 @@ export default (arr = [], dim = 2) => {
   const getNextGroupFactory = () => groupQ.shift()
   const getTree = () => buildNode(roots, getNextGroupFactory)
 
-  return buildNode([
-    root,
-  ], getNextGroupFactory)
+  return buildNode([root], getNextGroupFactory)
 }
 
-export {
-  stringifyTree
-}
+export { stringifyTree }

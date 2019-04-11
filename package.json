@@ -6,15 +6,22 @@
   "author": "j <jzendo@qq.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier --write src/**/*.js"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "babel-jest": "^24.7.1",
-    "jest": "^24.7.1"
+    "jest": "^24.7.1",
+    "prettier": "1.16.4"
   },
   "dependencies": {
     "common-tags": "^1.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern src/**/*.js"
+    }
   }
 }

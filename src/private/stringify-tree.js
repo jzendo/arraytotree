@@ -1,7 +1,7 @@
 import Node from './tree-node'
 
 const stringify = tree => {
-  const roots = Array.isArray(tree) ?  tree : [tree]
+  const roots = Array.isArray(tree) ? tree : [tree]
   let t = {}
   roots.forEach(node => {
     t = {
@@ -18,5 +18,5 @@ export default tree => {
     return stringify(tree)
   }
 
-  return ""
+  return ''
 }
