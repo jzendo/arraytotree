@@ -35,8 +35,11 @@ export default (arr = [], dim = 2) => {
     'invalid parameter'
   )
 
+  // Clone queue
   let queue = arr.slice(0)
+  // Let the top item be regarded as root
   let root = queue.shift()
+  // Make group queue
   let groupQ = generateGroupQueueFrom(queue, dim)
   const getNextGroupFn = () => groupQ.shift()
 
