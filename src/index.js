@@ -24,6 +24,7 @@ const generateGroupQueueFrom = (queue, dim) => {
     }
   )
 
+  // Ensure last
   if (r.t.length) r.r.push(r.t)
 
   return r.r
