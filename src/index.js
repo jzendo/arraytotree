@@ -1,10 +1,10 @@
 import buildNode from './private/build-tree'
 import stringifyTree from './private/stringify-tree'
-
 import invariant from 'invariant'
 
 const generateGroupQueueFrom = (queue, dim) => {
   let i = 0
+
   let r = queue.reduce(
     (r, c) => {
       if (++i <= dim) {
