@@ -1,47 +1,48 @@
 import Node from './tree-node'
+import invariant from 'invariant'
 
-function getNewNode(t) {
+function newNode(t) {
   return Node.getNode(t)
 }
 
 /**
- * Build the tree
+ * Build the tree-like struct
  *
- * @param {array} owners the tree owner
- * @param {function} getNextGroup get the next group
+ * @param {array} nodeOwners the tree owner
+ * @param {function} getNextGroupFn get the next group
  */
-function buildNodes(owners, getNextGroup) {
-  let collectedNextOwners = []
+function buildTreeStruct(nodeOwners, getNextGroupFn) {
+  let maybeNextNodeOwners = []
 
-  owners.forEach(owner => {
-    let group = getNextGroup()
+  nodeOwners.forEach(owner => {
+    let group = getNextGroupFn()
 
     if (group) {
       group
         .map(i => new Node(i))
         .forEach(n => {
           owner.getChildren().push(n)
-          collectedNextOwners.push(n)
+          maybeNextNodeOwners.push(n)
         })
     }
   })
 
-  if (collectedNextOwners.length) {
-    buildNodes(collectedNextOwners, getNextGroup)
+  if (maybeNextNodeOwners.length) {
+    buildTreeStruct(maybeNextNodeOwners, getNextGroupFn)
   }
 }
 
-export default (roots, getNextGroup, singleRoot = true) => {
-  if (!Array.isArray(roots)) throw new Error('should be a array.')
+export default (roots, getNextGroupFn, retunAsSingleRoot = true) => {
+  invariant(Array.isArray(roots), 'should be a array.')
 
   roots = roots.map(root => {
     if (!(root instanceof Node)) {
-      return getNewNode(root)
+      return newNode(root)
     }
   })
 
-  buildNodes(roots, getNextGroup)
+  buildTreeStruct(roots, getNextGroupFn)
 
-  if (singleRoot) return roots[0]
+  if (retunAsSingleRoot) return roots[0]
   else return roots
 }

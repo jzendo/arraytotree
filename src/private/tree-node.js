@@ -1,3 +1,6 @@
+/**
+ * @class Node
+ */
 export default class Node {
   constructor(title, children) {
     this.title = title
