@@ -5,6 +5,7 @@ import invariant from 'invariant'
 
 const generateGroupQueueFrom = (queue, dim) => {
   let i = 0
+
   let r = queue.reduce(
     (r, c) => {
       if (++i <= dim) {
