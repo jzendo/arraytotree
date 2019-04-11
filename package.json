@@ -14,10 +14,11 @@
     "@babel/preset-env": "^7.4.3",
     "babel-jest": "^24.7.1",
     "jest": "^24.7.1",
+    "common-tags": "^1.8.0",
     "prettier": "1.16.4"
   },
   "dependencies": {
-    "common-tags": "^1.8.0"
+    "invariant": "^2.2.4"
   },
   "husky": {
     "hooks": {

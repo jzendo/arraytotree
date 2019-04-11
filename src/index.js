@@ -1,6 +1,8 @@
 import buildNode from './private/build-tree'
 import stringifyTree from './private/stringify-tree'
 
+import invariant from 'invariant'
+
 const getGroupQueue = (queue, dim) => {
   let i = 0
   let groupQueue = queue.reduce(
@@ -28,16 +30,15 @@ const getGroupQueue = (queue, dim) => {
 }
 
 export default (arr = [], dim = 2) => {
-  if (!Array.isArray(arr) || !(Number.isInteger(dim) && dim > 0)) {
-    throw new Error('invalid parameter')
-  }
+  invariant(
+    Array.isArray(arr) && (Number.isInteger(dim) && dim > 0),
+    'invalid parameter'
+  )
 
   let queue = arr.slice(0)
   let root = queue.shift()
   let groupQ = getGroupQueue(queue, dim)
-
   const getNextGroupFactory = () => groupQ.shift()
-  const getTree = () => buildNode(roots, getNextGroupFactory)
 
   return buildNode([root], getNextGroupFactory)
 }

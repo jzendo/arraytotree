@@ -16,7 +16,10 @@ test('should be ok', () => {
   let thrown = () => {
     makeTree(null)
   }
+
   expect(thrown).toThrow()
+  expect(thrown).toThrowError(/invalid/)
+
 })
 
 test('should be ok(with default)', () => {
