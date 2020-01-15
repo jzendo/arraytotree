@@ -1,6 +1,7 @@
 {
   "name": "arraytotree",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "description": "A tool that convert plain array to tree data",
   "main": "src/index.js",
   "repository": "https://github.com/jzendo/arraytotree.git",
   "author": "j <jzendo@qq.com>",
